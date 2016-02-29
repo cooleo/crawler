@@ -1,0 +1,35 @@
+<section data-ng-controller="SeedsController">
+  <div class="page-header">
+    <h1>New Seed</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="seedForm" class="form-horizontal" data-ng-submit="create()" novalidate>
+      <fieldset>
+        <div class="form-group">
+          <label class="control-label" for="url">Title</label>
+          <div class="controls">
+            <input name="url" type="text" data-ng-model="url" id="url" class="form-control" placeholder="url">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="category">category</label>
+          <div class="controls">
+            <textarea name="content" data-ng-model="category" id="category" class="form-control" cols="30" rows="10" placeholder="category"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="siteName">Site name</label>
+          <div class="controls">
+            <input name="url" type="text" data-ng-model="siteName" id="siteName" class="form-control" placeholder="Site name">
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-default">
+        </div>
+        <div data-ng-show="error" class="text-danger">
+          <strong data-ng-bind="error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

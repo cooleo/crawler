@@ -5,13 +5,7 @@
  */
 var _ = require('lodash'),
   defaultAssets = require('./config/assets/default'),
-  testAssets = require('./config/assets/test'),
-  testConfig = require('./config/env/test'),
-  karmaReporters = ['progress'];
-
-if (testConfig.coverage) {
-  karmaReporters.push('coverage');
-}
+  testAssets = require('./config/assets/test');
 
 // Karma configuration
 module.exports = function (karmaConfig) {
@@ -20,21 +14,14 @@ module.exports = function (karmaConfig) {
     frameworks: ['jasmine'],
 
     preprocessors: {
-      'modules/*/client/views/**/*.html': ['ng-html2js'],
-      'modules/core/client/app/config.js': ['coverage'],
-      'modules/core/client/app/init.js': ['coverage'],
-      'modules/*/client/*.js': ['coverage'],
-      'modules/*/client/config/*.js': ['coverage'],
-      'modules/*/client/controllers/*.js': ['coverage'],
-      'modules/*/client/directives/*.js': ['coverage'],
-      'modules/*/client/services/*.js': ['coverage']
+      'modules/*/client/views/**/*.html': ['ng-html2js']
     },
 
     ngHtml2JsPreprocessor: {
       moduleName: 'mean',
 
       cacheIdFromPath: function (filepath) {
-        return filepath;
+        return filepath.replace('/client', '');
       },
     },
 
@@ -43,22 +30,7 @@ module.exports = function (karmaConfig) {
 
     // Test results reporter to use
     // Possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
-    reporters: karmaReporters,
-
-    // Configure the coverage reporter
-    coverageReporter: {
-      dir : 'coverage/client',
-      reporters: [
-        // Reporters not supporting the `file` property
-        { type: 'html', subdir: 'report-html' },
-        { type: 'lcov', subdir: 'report-lcov' },
-        // Output coverage to console
-        { type: 'text' }
-      ],
-      instrumenterOptions: {
-        istanbul: { noCompact: true }
-      }
-    },
+    reporters: ['progress'],
 
     // Web server port
     port: 9876,

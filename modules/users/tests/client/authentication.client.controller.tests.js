@@ -8,7 +8,6 @@
       scope,
       $httpBackend,
       $stateParams,
-      $state,
       $location;
 
     beforeEach(function () {
@@ -52,7 +51,7 @@
           // Test expected GET request
           $httpBackend.when('POST', '/api/auth/signin').respond(200, 'Fred');
 
-          scope.signin(true);
+          scope.signin();
           $httpBackend.flush();
 
           // Test scope value
@@ -60,39 +59,13 @@
           expect($location.url()).toEqual('/');
         });
 
-        it('should be redirected to previous state after successful login',
-          inject(function (_$state_) {
-            $state = _$state_;
-            $state.previous = {
-              state: {
-                name: 'articles.create'
-              },
-              params: {},
-              href: '/articles/create'
-            };
-
-            spyOn($state, 'transitionTo');
-            spyOn($state, 'go');
-
-            // Test expected GET request
-            $httpBackend.when('POST', '/api/auth/signin').respond(200, 'Fred');
-
-            scope.signin(true);
-            $httpBackend.flush();
-
-            // Test scope value
-            expect($state.go).toHaveBeenCalled();
-            expect($state.go).toHaveBeenCalledWith($state.previous.state.name, $state.previous.params);
-
-          }));
-
         it('should fail to log in with nothing', function () {
           // Test expected POST request
           $httpBackend.expectPOST('/api/auth/signin').respond(400, {
             'message': 'Missing credentials'
           });
 
-          scope.signin(true);
+          scope.signin();
           $httpBackend.flush();
 
           // Test scope value
@@ -109,7 +82,7 @@
             'message': 'Unknown user'
           });
 
-          scope.signin(true);
+          scope.signin();
           $httpBackend.flush();
 
           // Test scope value
@@ -123,12 +96,12 @@
           scope.authentication.user = 'Fred';
           $httpBackend.when('POST', '/api/auth/signup').respond(200, 'Fred');
 
-          scope.signup(true);
+          scope.signup();
           $httpBackend.flush();
 
           // test scope value
           expect(scope.authentication.user).toBe('Fred');
-          expect(scope.error).toEqual(null);
+          expect(scope.error).toEqual(undefined);
           expect($location.url()).toBe('/');
         });
 
@@ -138,7 +111,7 @@
             'message': 'Username already exists'
           });
 
-          scope.signup(true);
+          scope.signup();
           $httpBackend.flush();
 
           // Test scope value

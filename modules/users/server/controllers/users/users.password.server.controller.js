@@ -30,7 +30,7 @@ exports.forgot = function (req, res, next) {
     function (token, done) {
       if (req.body.username) {
         User.findOne({
-          username: req.body.username.toLowerCase()
+          username: req.body.username
         }, '-salt -password', function (err, user) {
           if (!user) {
             return res.status(400).send({
@@ -56,15 +56,10 @@ exports.forgot = function (req, res, next) {
       }
     },
     function (token, user, done) {
-
-      var httpTransport = 'http://';
-      if (config.secure && config.secure.ssl === true) {
-        httpTransport = 'https://';
-      }
       res.render(path.resolve('modules/users/server/templates/reset-password-email'), {
         name: user.displayName,
         appName: config.app.title,
-        url: httpTransport + req.headers.host + '/api/auth/reset/' + token
+        url: 'http://' + req.headers.host + '/api/auth/reset/' + token
       }, function (err, emailHTML) {
         done(err, emailHTML, user);
       });
@@ -149,10 +144,7 @@ exports.reset = function (req, res, next) {
                   if (err) {
                     res.status(400).send(err);
                   } else {
-                    // Remove sensitive data before return authenticated user
-                    user.password = undefined;
-                    user.salt = undefined;
-
+                    // Return authenticated user
                     res.json(user);
 
                     done(err, user);

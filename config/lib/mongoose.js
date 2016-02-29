@@ -9,13 +9,11 @@ var config = require('../config'),
   mongoose = require('mongoose');
 
 // Load the mongoose models
-module.exports.loadModels = function (callback) {
+module.exports.loadModels = function () {
   // Globbing model files
   config.files.server.models.forEach(function (modelPath) {
     require(path.resolve(modelPath));
   });
-
-  if (callback) callback();
 };
 
 // Initialize Mongoose

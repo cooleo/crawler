@@ -1,0 +1,20 @@
+<section data-ng-controller="SeedsController" data-ng-init="find()">
+  <div class="page-header">
+    <h1>Seeds</h1>
+  </div>
+  <div class="list-group">
+    <a data-ng-repeat="seed in seeds" data-ui-sref="seeds.view({seedId: seed._id})" class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span data-ng-bind="seed.created | date:'mediumDate'"></span>
+        by
+        <span data-ng-bind="seed.user.displayName"></span>
+      </small>
+      <h4 class="list-group-item-heading" data-ng-bind="seed.url"></h4>
+      <p class="list-group-item-text" data-ng-bind="seed.category"></p>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" data-ng-if="seeds.$resolved && !seeds.length">
+    No seeds yet, why don't you <a data-ui-sref="seeds.create">create one</a>?
+  </div>
+</section>

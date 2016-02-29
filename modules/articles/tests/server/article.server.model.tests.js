@@ -17,7 +17,6 @@ var user, article;
  * Unit tests
  */
 describe('Article Model Unit Tests:', function () {
-
   beforeEach(function (done) {
     user = new User({
       firstName: 'Full',
@@ -25,7 +24,7 @@ describe('Article Model Unit Tests:', function () {
       displayName: 'Full Name',
       email: 'test@test.com',
       username: 'username',
-      password: 'M3@n.jsI$Aw3$0m3'
+      password: 'password'
     });
 
     user.save(function () {
@@ -41,7 +40,6 @@ describe('Article Model Unit Tests:', function () {
 
   describe('Method Save', function () {
     it('should be able to save without problems', function (done) {
-      this.timeout(10000);
       return article.save(function (err) {
         should.not.exist(err);
         done();

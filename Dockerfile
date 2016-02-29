@@ -1,9 +1,6 @@
-FROM node:0.12
+FROM node:0.10
 
-# Install gem sass for  grunt-contrib-sass
-RUN apt-get update -qq && apt-get install -y build-essential
-RUN apt-get install -y ruby
-RUN gem install sass
+MAINTAINER Matthias Luebken, matthias@catalyst-zero.com
 
 WORKDIR /home/mean
 

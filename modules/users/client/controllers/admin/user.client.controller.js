@@ -19,13 +19,7 @@ angular.module('users.admin').controller('UserController', ['$scope', '$state', 
       }
     };
 
-    $scope.update = function (isValid) {
-      if (!isValid) {
-        $scope.$broadcast('show-errors-check-validity', 'userForm');
-
-        return false;
-      }
-
+    $scope.update = function () {
       var user = $scope.user;
 
       user.$update(function () {

@@ -1,0 +1,23 @@
+<section data-ng-controller="SeedsController" data-ng-init="findOne()">
+  <div class="page-header">
+    <h1 data-ng-bind="seed.url"></h1> </br>
+    <h1 data-ng-bind="seed.category"></h1>
+  </div>
+  <div class="pull-right" data-ng-show="authentication.user._id == seed.user._id">
+    <a class="btn btn-primary" data-ui-sref="seeds.edit({seedId: seed._id})">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" data-ng-click="remove();">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span data-ng-bind="seed.created | date:'mediumDate'"></span>
+      by
+      <span data-ng-bind="seed.user.displayName"></span>
+    </em>
+  </small>
+  <p class="lead" data-ng-bind="seed.content"></p>
+</section>

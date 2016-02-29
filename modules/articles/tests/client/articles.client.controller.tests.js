@@ -97,7 +97,7 @@
       expect(scope.article).toEqualData(mockArticle);
     }));
 
-    describe('$scope.create()', function () {
+    describe('$scope.craete()', function () {
       var sampleArticlePostData;
 
       beforeEach(function () {
@@ -119,7 +119,7 @@
         $httpBackend.expectPOST('api/articles', sampleArticlePostData).respond(mockArticle);
 
         // Run controller functionality
-        scope.create(true);
+        scope.create();
         $httpBackend.flush();
 
         // Test form inputs are reset
@@ -136,7 +136,7 @@
           message: errorMessage
         });
 
-        scope.create(true);
+        scope.create();
         $httpBackend.flush();
 
         expect(scope.error).toBe(errorMessage);
@@ -154,7 +154,7 @@
         $httpBackend.expectPUT(/api\/articles\/([0-9a-fA-F]{24})$/).respond();
 
         // Run controller functionality
-        scope.update(true);
+        scope.update();
         $httpBackend.flush();
 
         // Test URL location to new object
@@ -167,7 +167,7 @@
           message: errorMessage
         });
 
-        scope.update(true);
+        scope.update();
         $httpBackend.flush();
 
         expect(scope.error).toBe(errorMessage);

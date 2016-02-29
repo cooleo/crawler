@@ -6,15 +6,7 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
     $scope.authentication = Authentication;
 
     // Create new Article
-    $scope.create = function (isValid) {
-      $scope.error = null;
-
-      if (!isValid) {
-        $scope.$broadcast('show-errors-check-validity', 'articleForm');
-
-        return false;
-      }
-
+    $scope.create = function () {
       // Create new Article object
       var article = new Articles({
         title: this.title,
@@ -51,15 +43,7 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
     };
 
     // Update existing Article
-    $scope.update = function (isValid) {
-      $scope.error = null;
-
-      if (!isValid) {
-        $scope.$broadcast('show-errors-check-validity', 'articleForm');
-
-        return false;
-      }
-
+    $scope.update = function () {
       var article = $scope.article;
 
       article.$update(function () {
