@@ -22,13 +22,6 @@ $ npm install -g bower
 $ npm install -g grunt-cli
 ```
 
-## Quick Install
-Once you've downloaded the boilerplate and installed all the prerequisites, you're just a few steps away from starting to develop your MEAN application.
-
-The first thing you should do is install the Node.js dependencies. The boilerplate comes pre-bundled with a package.json file that contains the list of modules you need to start your application. To learn more about the modules installed visit the NPM & Package.json section.
-
-To install Node.js dependencies you're going to use npm again. In the application folder run this in the command-line:
-
 ```bash
 $ npm install
 ```
@@ -76,9 +69,6 @@ Finally, execute grunt's prod task `grunt prod`
 * enable/disable SSL mode in production environment change the `secure` option in `config/env/production.js`
 
 
-## Testing Your Application
-You can run the full test suite included with MEAN.JS with the test task:
-
 ```bash
 $ grunt test
 ```
@@ -109,24 +99,24 @@ $ docker-compose up
 
 * Local development and testing with just Docker:
 ```bash
-$ docker build -t mean .
+$ docker build -t crawler .
 $ docker run -p 27017:27017 -d --name db mongo
-$ docker run -p 3000:3000 --link db:db_1 mean
+$ docker run -p 3000:3000 --link db:db_1 crawler
 $
 ```
 
 * To enable live reload, forward port 35729 and mount /app and /public as volumes:
 ```bash
-$ docker run -p 3000:3000 -p 35729:35729 -v /Users/mdl/workspace/mean-stack/mean/public:/home/mean/public -v /Users/mdl/workspace/mean-stack/mean/app:/home/mean/app --link db:db_1 mean
+$ docker run -p 3000:3000 -p 35729:35729 -v /Users/mdl/workspace/crawler-stack/crawler/public:/home/crawler/public -v /Users/mdl/workspace/crawler-stack/crawler/app:/home/crawler/app --link db:db_1 crawler
 ```
 
-## Getting Started With MEAN.JS
-You have your application running, but there is a lot of stuff to understand. We recommend you go over the [Official Documentation](http://meanjs.org/docs.html).
-In the docs we'll try to explain both general concepts of MEAN components and give you some guidelines to help you improve your development process. We tried covering as many aspects as possible, and will keep it updated by your request. You can also help us develop and improve the documentation by checking out the *gh-pages* branch of this repository.
+## Getting Started With crawler.JS
+You have your application running, but there is a lot of stuff to understand. We recommend you go over the [Official Documentation](http://crawlerjs.org/docs.html).
+In the docs we'll try to explain both general concepts of crawler components and give you some guidelines to help you improve your development process. We tried covering as many aspects as possible, and will keep it updated by your request. You can also help us develop and improve the documentation by checking out the *gh-pages* branch of this repository.
 
 ## Credits
 Inspired by the great work of [Madhusudhan Srinivasa](https://github.com/madhums/)
-The MEAN name was coined by [Valeri Karpov](http://blog.mongodb.org/post/49262866911/the-mean-stack-mongodb-expressjs-angularjs-and)
+The crawler name was coined by [Valeri Karpov](http://blog.mongodb.org/post/49262866911/the-crawler-stack-mongodb-expressjs-angularjs-and)
 
 ## License
 (The MIT License)
