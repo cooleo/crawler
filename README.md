@@ -114,10 +114,6 @@ $ docker run -p 3000:3000 -p 35729:35729 -v /Users/mdl/workspace/crawler-stack/c
 You have your application running, but there is a lot of stuff to understand. We recommend you go over the [Official Documentation](http://crawlerjs.org/docs.html).
 In the docs we'll try to explain both general concepts of crawler components and give you some guidelines to help you improve your development process. We tried covering as many aspects as possible, and will keep it updated by your request. You can also help us develop and improve the documentation by checking out the *gh-pages* branch of this repository.
 
-## Credits
-Inspired by the great work of [Madhusudhan Srinivasa](https://github.com/madhums/)
-The crawler name was coined by [Valeri Karpov](http://blog.mongodb.org/post/49262866911/the-crawler-stack-mongodb-expressjs-angularjs-and)
-
 ## License
 (The MIT License)
 
