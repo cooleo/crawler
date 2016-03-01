@@ -102,6 +102,14 @@
     "load-grunt-tasks": "^3.2.0",
     "run-sequence": "^1.1.1",
     "should": "^7.0.1",
-    "supertest": "^1.0.1"
+    "supertest": "^1.0.1",
+
+    "cheerio": "^0.19.0",
+    "fs-extra": "^0.24.0",
+    "minimist": "*",
+    "node-uuid": "^1.4.3",
+    "request": "^2.65.0",
+    "sqlite3": "^3.1.0",
+    "ws": "^0.8.0"
   }
 }

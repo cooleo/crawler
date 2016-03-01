@@ -19,6 +19,7 @@ var config = require('../config'),
   consolidate = require('consolidate'),
   path = require('path');
 
+
 /**
  * Initialize local variables
  */
@@ -244,6 +245,15 @@ module.exports.init = function (db) {
 
   // Configure Socket.io
   app = this.configureSocketIO(app, db);
+
+  var Master = require('./master');
+  var defaultPort = 8089;
+  var defaultMasterHost = 'localhost:' + defaultPort;
+  var url = 'http://vnexpress.net/';
+
+  var options = {port: arguments.p || defaultPort, url: url};
+  var master = new Master(options);
+
 
   return app;
 };

@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h1>Queues</h1>
+  </div>
+  <div class="list-group">
+    <a data-ng-repeat="queue in vm.queues"
+       data-ui-sref="queues.view({ queueId: queue._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span data-ng-bind="queue.created | date:'mediumDate'"></span>
+        by
+        <span data-ng-if="queue.user" data-ng-bind="queue.user.displayName"></span>
+        <span data-ng-if="!queue.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" data-ng-bind="queue.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" data-ng-if="vm.queues.$resolved && !vm.queues.length">
+    No Queues yet, why don't you <a data-ui-sref="queues.create">create one</a>?
+  </div>
+</section>
